@@ -34,13 +34,12 @@ module.exports = {
               "@babel/preset-react",
             ],
             plugins: [
-              // ["@babel/plugin-transform-runtime", { regenerator: true }],
               ["@babel/plugin-proposal-class-properties", { loose: false }],
-              // [
-              //   "import",
-              //   { libraryName: "antd", style: "css", libraryDirectory: "es" },
-              //   "antd",
-              // ],
+              [
+                "import",
+                { libraryName: "antd", style: "css", libraryDirectory: "es" },
+                "antd",
+              ],
             ],
           },
         },

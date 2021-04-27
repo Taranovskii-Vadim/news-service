@@ -20,11 +20,15 @@
   "author": "prgPaslen <taranovscki.vadim@yandex.ru>",
   "license": "ISC",
   "dependencies": {
+    "@ant-design/icons": "^4.6.2",
+    "antd": "^4.15.2",
+    "ky": "^0.27.0",
     "mobx": "^6.2.0",
     "mobx-react-lite": "^3.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "sass": "^1.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.13.15",
@@ -35,6 +39,7 @@
     "@types/react-dom": "^17.0.3",
     "@types/react-router-dom": "^5.1.7",
     "babel-loader": "^8.2.2",
+    "babel-plugin-import": "^1.13.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "css-loader": "^5.2.2",
     "html-webpack-plugin": "^5.3.1",

@@ -1,5 +1,12 @@
-import { action, computed, makeObservable, observable } from "mobx";
-import { LOCAL_STORAGE_USER_KEY } from "../constants";
+import ky from "ky";
+import {
+  action,
+  computed,
+  makeObservable,
+  observable,
+  runInAction,
+} from "mobx";
+import { ENDPOINTS, LOCAL_STORAGE_USER_KEY } from "../constants";
 import { IRecord, IUser } from "../types";
 
 export default class RootStore {
@@ -34,6 +41,24 @@ export default class RootStore {
 
   get fullName(): string {
     return `${this.user.lastName} ${this.user.firstName}`;
+  }
+
+  async login(login: string, password: string): Promise<void> {
+    try {
+      const user: IUser = await ky
+        .post(ENDPOINTS.login(), {
+          json: { login, password },
+        })
+        .json();
+      if (user) {
+        runInAction(() => {
+          localStorage.setItem(LOCAL_STORAGE_USER_KEY, JSON.stringify(user));
+          this.user = user;
+        });
+      }
+    } catch (e) {
+      console.error(`Failed to login, reason: ${e}`);
+    }
   }
 
   logout(): void {
