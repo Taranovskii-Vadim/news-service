@@ -34,22 +34,28 @@ const LoginPage: React.FC<IStoreProps> = observer(({ store }) => {
         Сервис новостей
       </Title>
       <Form layout='vertical' onFinish={handleLogin}>
-        <Form.Item>
+        <Form.Item
+          name='login'
+          rules={[{ required: true, message: `Укажите логин` }]}
+        >
           <Input
-            name='login'
             prefix={<UserOutlined />}
-            placeholder='Введите логин'
+            placeholder='Введите имя пользователя'
           />
         </Form.Item>
-        <Form.Item>
-          <Input
-            name='password'
+        <Form.Item
+          name='password'
+          rules={[{ required: true, message: `Укажите пароль` }]}
+        >
+          <Input.Password
             prefix={<LockOutlined />}
+            type='password'
             placeholder='Введите пароль'
           />
         </Form.Item>
+
         <Form.Item>
-          <Button style={{ width: "100%" }} type='primary' htmlType='submit'>
+          <Button type='primary' htmlType='submit'>
             Войти
           </Button>
         </Form.Item>

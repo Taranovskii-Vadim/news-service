@@ -13,9 +13,7 @@
   },
   "keywords": [
     "react",
-    "mobx",
-    "express",
-    "postgresql"
+    "mobx"
   ],
   "author": "prgPaslen <taranovscki.vadim@yandex.ru>",
   "license": "ISC",

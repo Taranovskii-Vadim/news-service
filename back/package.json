@@ -1,0 +1,41 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "description": "back image of newsservice app",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/PrgPaslen/newsservice.git"
+  },
+  "keywords": [
+    "express",
+    "postgresql"
+  ],
+  "author": "prgPaslen <taranovscki.vadim@yandex.ru>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/PrgPaslen/newsservice/issues"
+  },
+  "homepage": "https://gitlab.com/PrgPaslen/newsservice#readme",
+  "dependencies": {
+    "@types/cookie-parser": "^1.4.2",
+    "@types/cors": "^2.8.10",
+    "@types/express": "^4.17.11",
+    "@types/jsonwebtoken": "^8.5.1",
+    "@types/pg": "^7.14.11",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.6.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
