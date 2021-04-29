@@ -1,0 +1,32 @@
+.ant-layout-header {
+  background-color: #fff;
+  border-bottom: 1px solid #e8e8e8;
+
+  display: flex;
+  align-items: center;
+
+  .ant-menu {
+    margin-left: 50px;
+    width: 100%;
+    display: flex;
+    max-height: 64px;
+
+    .menu-item {
+      font-size: 1.2rem;
+    }
+  }
+
+  .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu.user-menu {
+    margin-left: auto !important;
+    font-weight: 500;
+  }
+}
+
+.ant-layout-content {
+  height: calc(100vh - 64px);
+}
+
+.ant-breadcrumb {
+  margin-bottom: 15px;
+  margin-left: 5px;
+}

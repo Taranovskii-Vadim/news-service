@@ -9,14 +9,13 @@ import {
 
 import { ROUTES } from "./constants";
 
+import ProtectedPages from "./pages";
 import Login from "./pages/LoginPage";
 import Logout from "./pages/LogoutPage";
 
 import RootStore from "./store";
 
 const store = new RootStore();
-
-// window.__ROOT = store;
 
 const App: React.FC = observer(() => {
   return (
@@ -30,7 +29,7 @@ const App: React.FC = observer(() => {
         </Route>
         <Route>
           {store.user ? (
-            <p>Welcome</p>
+            <ProtectedPages store={store} />
           ) : (
             <Redirect to={{ pathname: ROUTES.login() }} />
           )}

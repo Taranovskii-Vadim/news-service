@@ -54,4 +54,10 @@ export class AuthController {
       res.status(403).send(`Forbidden: ${e}`);
     }
   }
+
+  async logout(req: Request, res: Response) {
+    res.clearCookie(COOKIE_KEY);
+    res.writeHead(302, { location: "/login" });
+    res.end();
+  }
 }
