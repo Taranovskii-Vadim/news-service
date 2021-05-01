@@ -1,4 +1,5 @@
 import { AuthController } from "./controller/authController";
+import { RecordsController } from "./controller/recordsController";
 
 export const ONE_WEEK = 7 * 24 * 60 * 60 * 1000;
 
@@ -24,6 +25,13 @@ export const Routes = [
     route: `${API_PREFIX}/auth/logout`,
     controller: AuthController,
     action: "logout",
+    auth: false,
+  },
+  {
+    method: "get",
+    route: `${API_PREFIX}/records`,
+    controller: RecordsController,
+    action: "all",
     auth: false,
   },
 ];

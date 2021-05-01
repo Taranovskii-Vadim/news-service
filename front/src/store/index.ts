@@ -13,15 +13,9 @@ export default class RootStore {
   isLoading = false;
   currentRecord: IRecord | null = null;
   records: IRecord[] = [];
-  //   TODO: сменить на null позже
+
   user: IUser | null = null;
-  // {
-  //   id: 1,
-  //   email: "test@test.ru",
-  //   login: "prgVadim",
-  //   firstName: "Вадим",
-  //   lastName: "Тарановский",
-  // };
+
   constructor() {
     const userJSON = localStorage.getItem(LOCAL_STORAGE_USER_KEY);
     if (userJSON) {
@@ -64,5 +58,20 @@ export default class RootStore {
   logout(): void {
     localStorage.removeItem(LOCAL_STORAGE_USER_KEY);
     this.user = null;
+  }
+
+  async fetchRecords(): Promise<void> {
+    try {
+      const records: IRecord[] = await ky.get(ENDPOINTS.records()).json();
+      if (records) {
+        runInAction(() => {
+          this.records = records;
+        });
+      }
+    } catch (e) {
+      console.error(`Failed to fetch records reason: ${e}`);
+    } finally {
+      this.isLoading = false;
+    }
   }
 }

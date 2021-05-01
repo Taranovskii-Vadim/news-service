@@ -12,7 +12,7 @@ import "./style.scss";
 const PostsPage: React.FC<IStoreProps> = observer(({ store }) => {
   const history = useHistory();
 
-  //   React.useEffect(() => void store.fetchRecords(), []);
+  React.useEffect(() => void store.fetchRecords(), []);
 
   const columns = [
     {
@@ -27,11 +27,11 @@ const PostsPage: React.FC<IStoreProps> = observer(({ store }) => {
       title: "Краткое описание",
       dataIndex: "description",
     },
-    {
-      title: "Автор",
-      dataIndex: "user",
-      render: (s, i) => i.user.login,
-    },
+    // {
+    //   title: "Автор",
+    //   dataIndex: "user",
+    //   render: (s, i) => i.user.login,
+    // },
   ];
 
   const handleAdd = () => history.push(ROUTES.record("new"));
