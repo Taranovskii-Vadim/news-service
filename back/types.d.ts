@@ -22,8 +22,5 @@ export interface IRecord {
     blocks: { type: string; data: any }[];
   };
   timestamp?: string;
-  user?: {
-    readonly id: number;
-    login: string;
-  };
+  authorEmail: string;
 }

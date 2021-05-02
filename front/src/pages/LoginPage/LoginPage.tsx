@@ -1,10 +1,10 @@
 import React from "react";
+import { observer } from "mobx-react-lite";
 import { useHistory } from "react-router";
 import { Button, Form, Input, Typography } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import { observer } from "mobx-react-lite";
-import { IStoreProps } from "../../types";
 
+import { IStoreProps } from "../../types";
 import { ROUTES } from "../../constants";
 
 import "./style.scss";

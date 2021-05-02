@@ -1,0 +1,31 @@
+.pages-post {
+  padding: 20px 20px;
+
+  .ant-card-body {
+    min-height: 500px;
+  }
+  .description-wrapper {
+    max-width: 650px;
+    margin: 20px auto;
+  }
+
+  .post-title {
+    margin-bottom: 5px;
+    max-width: calc(100% - 16px);
+    margin-left: 16px;
+  }
+
+  .post-description {
+    font-size: 16px;
+    font-weight: 400;
+    color: #666;
+    margin-bottom: 0;
+
+    max-width: calc(100% - 16px);
+    margin-left: 16px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+}

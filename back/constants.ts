@@ -34,4 +34,10 @@ export const Routes = [
     action: "all",
     auth: false,
   },
+  {
+    method: `get`,
+    route: `${API_PREFIX}/record/:id`,
+    controller: RecordsController,
+    action: `one`,
+  },
 ];

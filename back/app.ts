@@ -3,10 +3,10 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 
+dotenv.config();
+
 import { Routes } from "./constants";
 import { requireAuth } from "./middleware/auth";
-
-dotenv.config();
 
 const app = express();
 

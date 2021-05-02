@@ -5,11 +5,11 @@ import { Layout, Menu } from "antd";
 import UserOutlined from "@ant-design/icons/UserOutlined";
 import LogoutOutlined from "@ant-design/icons/LogoutOutlined";
 
-import RecordsPage from "./RecordsPage";
-
 import { IStoreProps } from "../types";
-
 import { ROUTES } from "../constants";
+
+import RecordsPage from "./RecordsPage";
+import RecordPage from "./RecordPage";
 
 import "./style.scss";
 
@@ -46,6 +46,9 @@ const ProtectedPages: React.FC<IStoreProps> = observer(({ store }) => {
       </Header>
       <Content>
         <Switch>
+          <Route path={ROUTES.record(":id")} exact>
+            <RecordPage store={store} />
+          </Route>
           <Route path={ROUTES.records()} exact>
             <RecordsPage store={store} />
           </Route>

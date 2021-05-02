@@ -13,17 +13,14 @@ export interface IStoreProps {
 }
 
 export interface IRecord {
-  readonly id: number;
+  readonly id?: number;
   title: string;
   description: string;
+  authorEmail?: string;
   editorData?: {
     time: number;
     version: string;
     blocks: { type: string; data: any }[];
   };
   timestamp?: string;
-  user?: {
-    readonly id: number;
-    login: string;
-  };
 }

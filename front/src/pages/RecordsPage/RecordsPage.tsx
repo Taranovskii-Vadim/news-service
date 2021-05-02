@@ -1,10 +1,10 @@
 import * as React from "react";
 import { observer } from "mobx-react-lite";
-import { ROUTES } from "../../constants";
+import { Breadcrumb, Button, Card, Empty, Table } from "antd";
 import { useHistory } from "react-router-dom";
 import PlusCircleOutlined from "@ant-design/icons/PlusCircleOutlined";
 
-import { Breadcrumb, Button, Card, Empty, Table } from "antd";
+import { ROUTES } from "../../constants";
 import { IStoreProps } from "../../types";
 
 import "./style.scss";
@@ -27,11 +27,10 @@ const PostsPage: React.FC<IStoreProps> = observer(({ store }) => {
       title: "Краткое описание",
       dataIndex: "description",
     },
-    // {
-    //   title: "Автор",
-    //   dataIndex: "user",
-    //   render: (s, i) => i.user.login,
-    // },
+    {
+      title: "Автор",
+      dataIndex: "authorEmail",
+    },
   ];
 
   const handleAdd = () => history.push(ROUTES.record("new"));
@@ -56,7 +55,7 @@ const PostsPage: React.FC<IStoreProps> = observer(({ store }) => {
           dataSource={store.records.slice()}
           columns={columns}
           onRow={record => ({
-            onClick: () => history.push(ROUTES.post(record.id)),
+            onClick: () => history.push(ROUTES.record(record.id)),
           })}
           rowKey='id'
           locale={{

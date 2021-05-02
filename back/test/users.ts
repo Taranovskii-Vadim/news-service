@@ -2,11 +2,11 @@ import { IAppUser } from "../types";
 
 export const USERS: (IAppUser & { password: string })[] = [
   {
-    id: 1,
-    email: "vgtaranovsky@test.ru",
-    login: "vadim",
-    firstName: "вадим",
-    lastName: "тарановский",
-    password: "qwerty",
+    id: 2,
+    email: "petr@test.ru",
+    login: "petr",
+    firstName: "петр",
+    lastName: "иванов",
+    password: "1234",
   },
 ];

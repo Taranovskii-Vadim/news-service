@@ -6,8 +6,27 @@ import {
   observable,
   runInAction,
 } from "mobx";
+
 import { ENDPOINTS, LOCAL_STORAGE_USER_KEY } from "../constants";
 import { IRecord, IUser } from "../types";
+
+const emptyRecord = () => ({
+  title: `Укажите заголовок`,
+  description: `Краткое описание`,
+  editorData: {
+    time: new Date().getTime(),
+    version: `2.19.0`,
+    blocks: [
+      {
+        type: `header`,
+        data: {
+          text: "Содержимое новости",
+          level: 2,
+        },
+      },
+    ],
+  },
+});
 
 export default class RootStore {
   isLoading = false;
@@ -73,5 +92,29 @@ export default class RootStore {
     } finally {
       this.isLoading = false;
     }
+  }
+
+  async fetchRecord(id: number): Promise<void> {
+    this.isLoading = true;
+    try {
+      const record: IRecord = await ky.get(ENDPOINTS.record(id)).json();
+      if (record) {
+        runInAction(() => {
+          this.currentRecord = record;
+        });
+      }
+    } catch (e) {
+      console.error(`Failed to fetch record, reason: ${e}`);
+    } finally {
+      this.isLoading = false;
+    }
+  }
+
+  newRecord(): void {
+    this.currentRecord = emptyRecord();
+  }
+
+  closeRecord(): void {
+    this.currentRecord = null;
   }
 }
