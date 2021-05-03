@@ -35,9 +35,26 @@ export const Routes = [
     auth: false,
   },
   {
-    method: `get`,
+    method: "get",
     route: `${API_PREFIX}/record/:id`,
     controller: RecordsController,
-    action: `one`,
+    action: "one",
+    auth: false,
+  },
+  {
+    method: "delete",
+    route: `${API_PREFIX}/record/:id`,
+    controller: RecordsController,
+    action: "remove",
+    // TODO поменять на true
+    auth: false,
+  },
+  {
+    method: "post",
+    route: `${API_PREFIX}/records`,
+    controller: RecordsController,
+    action: "save",
+    // TODO поменять на true
+    auth: false,
   },
 ];

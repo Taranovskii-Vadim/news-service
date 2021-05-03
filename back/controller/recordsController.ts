@@ -36,4 +36,19 @@ export class RecordsController {
       console.log(e);
     }
   }
+
+  async remove(req: Request) {
+    const id = req.params.id;
+    try {
+      await db.query("DELETE FROM records where id = $1", [id]);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async save(req: Request) {
+    // TODO подумать как сохранить editorData
+    console.log(req.body);
+    return { test: "test" };
+  }
 }

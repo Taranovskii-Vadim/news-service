@@ -19,12 +19,17 @@
   "license": "ISC",
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
+    "@editorjs/editorjs": "^2.21.0",
+    "@editorjs/header": "^2.6.1",
+    "@editorjs/image": "^2.6.0",
+    "@editorjs/paragraph": "^2.8.0",
     "antd": "^4.15.2",
     "ky": "^0.27.0",
     "mobx": "^6.2.0",
     "mobx-react-lite": "^3.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-editor-js": "^1.9.0",
     "react-router-dom": "^5.2.0",
     "sass": "^1.32.11"
   },

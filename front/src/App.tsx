@@ -17,6 +17,8 @@ import RootStore from "./store";
 
 const store = new RootStore();
 
+// TODO: что-то с роутингом не то
+
 const App: React.FC = observer(() => {
   return (
     <Router>

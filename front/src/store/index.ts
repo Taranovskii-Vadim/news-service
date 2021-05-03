@@ -10,18 +10,23 @@ import {
 import { ENDPOINTS, LOCAL_STORAGE_USER_KEY } from "../constants";
 import { IRecord, IUser } from "../types";
 
+interface IRecordData {
+  title?: IRecord["title"];
+  description?: IRecord["description"];
+  editorData?: IRecord["editorData"];
+}
+
 const emptyRecord = () => ({
-  title: `Укажите заголовок`,
+  title: `Новая новость`,
   description: `Краткое описание`,
   editorData: {
     time: new Date().getTime(),
     version: `2.19.0`,
     blocks: [
       {
-        type: `header`,
+        type: "paragraph",
         data: {
-          text: "Содержимое новости",
-          level: 2,
+          text: "Заголовок",
         },
       },
     ],
@@ -116,5 +121,46 @@ export default class RootStore {
 
   closeRecord(): void {
     this.currentRecord = null;
+  }
+
+  update(data: IRecordData): void {
+    if (this.currentRecord) {
+      this.currentRecord = {
+        ...this.currentRecord,
+        ...data,
+      };
+    }
+  }
+
+  async saveRecord(): Promise<void> {
+    try {
+      const newRecord: IRecord = await ky
+        .post(ENDPOINTS.records(), {
+          json: this.currentRecord,
+        })
+        .json();
+      runInAction(() => {
+        if (this.currentRecord) {
+          this.records = [...this.records, newRecord];
+        }
+        this.currentRecord = newRecord;
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async removeRecord(id: number): Promise<void> {
+    this.isLoading = true;
+    try {
+      await ky.delete(ENDPOINTS.record(id)).json();
+      runInAction(() => {
+        this.records = this.records.filter(item => item.id !== id);
+      });
+    } catch (e) {
+      console.error(`Failed to remove record, reason: ${e}`);
+    } finally {
+      this.isLoading = false;
+    }
   }
 }
