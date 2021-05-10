@@ -21,6 +21,13 @@ export const Routes = [
     auth: false,
   },
   {
+    method: "post",
+    route: `${API_PREFIX}/auth/signUp`,
+    controller: AuthController,
+    action: "signUp",
+    auth: false,
+  },
+  {
     method: "get",
     route: `${API_PREFIX}/auth/logout`,
     controller: AuthController,
@@ -46,15 +53,13 @@ export const Routes = [
     route: `${API_PREFIX}/record/:id`,
     controller: RecordsController,
     action: "remove",
-    // TODO поменять на true
-    auth: false,
+    auth: true,
   },
   {
     method: "post",
     route: `${API_PREFIX}/records`,
     controller: RecordsController,
     action: "save",
-    // TODO поменять на true
-    auth: false,
+    auth: true,
   },
 ];

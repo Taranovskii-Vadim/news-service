@@ -3,9 +3,8 @@ import RootStore from "./store";
 export interface IUser {
   readonly id: number;
   email: string;
-  login: string;
-  firstName: string;
-  lastName: string;
+  name: string;
+  surname: string;
 }
 
 export interface IStoreProps {

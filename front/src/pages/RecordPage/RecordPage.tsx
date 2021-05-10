@@ -38,16 +38,6 @@ const RecordPage: React.FC<IStoreProps> = observer(({ store }) => {
     return () => store.closeRecord();
   }, [id]);
 
-  // TODO: это на потом когда к файлам перейду
-
-  // const tools = configEditorTools({
-  //   image: {
-  //     uploader: {
-  //       uploadByFile: (file: File) => store.uploadFile(file),
-  //     },
-  //   },
-  // });
-
   const handleDelete = async () => {
     await store.removeRecord(recordId);
     history.push(ROUTES.records());
@@ -135,7 +125,6 @@ const RecordPage: React.FC<IStoreProps> = observer(({ store }) => {
               }
             }}
             data={store.currentRecord.editorData}
-            // tools={tools}
           />
         </Card>
       ) : (

@@ -58,14 +58,14 @@ export default class RootStore {
   }
 
   get fullName(): string {
-    return `${this.user.lastName} ${this.user.firstName}`;
+    return `${this.user.surname} ${this.user.name}`;
   }
 
-  async login(login: string, password: string): Promise<void> {
+  async login(email: string, password: string): Promise<void> {
     try {
       const user: IUser = await ky
         .post(ENDPOINTS.login(), {
-          json: { login, password },
+          json: { email, password },
         })
         .json();
       if (user) {
@@ -76,6 +76,29 @@ export default class RootStore {
       }
     } catch (e) {
       console.error(`Failed to login, reason: ${e}`);
+    }
+  }
+
+  async signUp(
+    name: string,
+    surname: string,
+    email: string,
+    password: string
+  ): Promise<void> {
+    try {
+      const user: IUser = await ky
+        .post(ENDPOINTS.signUp(), {
+          json: { name, surname, email, password },
+        })
+        .json();
+      if (user) {
+        runInAction(() => {
+          localStorage.setItem(LOCAL_STORAGE_USER_KEY, JSON.stringify(user));
+          this.user = user;
+        });
+      }
+    } catch (e) {
+      console.error(`Failed to sign up, reason: ${e}`);
     }
   }
 
@@ -136,7 +159,7 @@ export default class RootStore {
     try {
       const newRecord: IRecord = await ky
         .post(ENDPOINTS.records(), {
-          json: this.currentRecord,
+          json: { record: this.currentRecord, userId: this.user.id },
         })
         .json();
       runInAction(() => {

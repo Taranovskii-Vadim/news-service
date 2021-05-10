@@ -14,6 +14,7 @@ export const ROUTES: IDefenitionApi = {
 export const ENDPOINTS: IDefenitionApi = {
   login: () => "/api/auth/login",
   logout: () => "/api/auth/logout",
+  signUp: () => "/api/auth/signUp",
   records: () => "/api/records",
   record: (id: number) => `/api/record/${id}`,
   upload: () => "/api/upload",
