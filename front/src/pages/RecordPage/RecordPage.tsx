@@ -90,13 +90,13 @@ const RecordPage: React.FC<IStoreProps> = observer(({ store }) => {
         className='post-title'
         editable={{ onChange: handleTitleChange }}
       >
-        {store.currentRecord?.title ?? ``}
+        {store.currentRecord?.title}
       </Paragraph>
       <Paragraph
         className='post-description'
         editable={{ onChange: handleDescriptionChange }}
       >
-        {store.currentRecord?.description ?? ``}
+        {store.currentRecord?.description}
       </Paragraph>
     </div>
   );

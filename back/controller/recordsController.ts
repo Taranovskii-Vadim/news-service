@@ -51,17 +51,25 @@ export class RecordsController {
 
   async save(req: Request) {
     const {
-      record: { title, description, editorData },
+      record: { title, description, editorData, id },
       userId,
     } = req.body;
 
+    const queryString = id
+      ? `UPDATE public.records
+      SET title=$1, description=$2, "authorId"=$3, "editorData"=$4
+      WHERE id = ${id};`
+      : `INSERT INTO records
+    (title, description, "authorId", "editorData")
+    VALUES ($1, $2, $3, $4);`;
+
     try {
-      const record = await db.query(
-        `INSERT INTO records
-        (title, description, "authorId", "editorData")
-        VALUES ($1, $2, $3, $4);`,
-        [title, description, userId, JSON.stringify(editorData)]
-      );
+      const record = await db.query(queryString, [
+        title,
+        description,
+        userId,
+        JSON.stringify(editorData),
+      ]);
       return record;
     } catch (e) {
       console.log(e);

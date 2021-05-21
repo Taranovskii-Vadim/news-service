@@ -163,7 +163,7 @@ export default class RootStore {
         })
         .json();
       runInAction(() => {
-        if (this.currentRecord) {
+        if (newRecord) {
           this.records = [...this.records, newRecord];
         }
         this.currentRecord = newRecord;
