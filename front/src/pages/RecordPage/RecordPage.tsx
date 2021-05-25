@@ -1,6 +1,9 @@
 import * as React from "react";
+import EditorJs from "react-editor-js";
 import { observer } from "mobx-react-lite";
 import { Link, useHistory, useParams } from "react-router-dom";
+import DeleteOutlined from "@ant-design/icons/DeleteOutlined";
+import SaveOutlined from "@ant-design/icons/SaveOutlined";
 import {
   Breadcrumb,
   Button,
@@ -10,9 +13,6 @@ import {
   Space,
   Typography,
 } from "antd";
-import DeleteOutlined from "@ant-design/icons/DeleteOutlined";
-import SaveOutlined from "@ant-design/icons/SaveOutlined";
-import EditorJs from "react-editor-js";
 
 import { ROUTES } from "../../constants";
 import { configEditorTools, i18n } from "../../configs";

@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
+import { Request, Response } from "express";
 
 import { ERROR, COOKIE_KEY, ONE_WEEK } from "../constants";
 import { db } from "../db";

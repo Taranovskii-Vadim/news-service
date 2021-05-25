@@ -1,5 +1,6 @@
-import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
+import { NextFunction, Request, Response } from "express";
+
 import { COOKIE_KEY } from "../constants";
 
 export const requireAuth = (

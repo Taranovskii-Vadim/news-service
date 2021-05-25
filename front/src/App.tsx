@@ -7,13 +7,13 @@ import {
   Redirect,
 } from "react-router-dom";
 
+import RootStore from "./store";
+
 import { ROUTES } from "./constants";
 
 import ProtectedPages from "./pages";
 import Login from "./pages/LoginPage";
 import Logout from "./pages/LogoutPage";
-
-import RootStore from "./store";
 
 const store = new RootStore();
 
