@@ -7,7 +7,11 @@ import {
   runInAction,
 } from "mobx";
 
-import { ENDPOINTS, LOCAL_STORAGE_USER_KEY } from "../constants";
+import {
+  ENDPOINTS,
+  IMG_URL_PREFIX,
+  LOCAL_STORAGE_USER_KEY,
+} from "../constants";
 import { IRecord, IUser } from "../types";
 
 interface IRecordData {
@@ -17,16 +21,17 @@ interface IRecordData {
 }
 
 const emptyRecord = () => ({
-  title: `Новая новость`,
+  title: `Укажите заголовок`,
   description: `Краткое описание`,
   editorData: {
     time: new Date().getTime(),
     version: `2.19.0`,
     blocks: [
       {
-        type: "paragraph",
+        type: `header`,
         data: {
-          text: "Заголовок",
+          text: "Содержимое новости",
+          level: 2,
         },
       },
     ],
@@ -76,6 +81,24 @@ export default class RootStore {
       }
     } catch (e) {
       console.error(`Failed to login, reason: ${e}`);
+    }
+  }
+
+  async uploadFile(
+    file: File
+  ): Promise<{ success: number; file?: { url: string } }> {
+    try {
+      const body = new FormData();
+      body.append("file", file);
+
+      return {
+        success: 1,
+        file: {
+          url: `${IMG_URL_PREFIX}/${file.name}`,
+        },
+      };
+    } catch (e) {
+      console.error(`Failed to upload image, reason ${e}`);
     }
   }
 

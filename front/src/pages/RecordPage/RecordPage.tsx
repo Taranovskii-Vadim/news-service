@@ -119,6 +119,13 @@ const RecordPage: React.FC<IStoreProps> = observer(({ store }) => {
         <Card title={title} extra={extra}>
           <EditorJs
             i18n={i18n}
+            tools={configEditorTools({
+              image: {
+                uploader: {
+                  uploadByFile: (file: File) => store.uploadFile(file),
+                },
+              },
+            })}
             onReady={(instance?: any) => {
               if (instance) {
                 setEditor(instance);

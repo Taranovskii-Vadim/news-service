@@ -1,5 +1,7 @@
 export const LOCAL_STORAGE_USER_KEY = "news_current_user";
 
+export const IMG_URL_PREFIX = `/img/news`;
+
 interface IDefenitionApi {
   [key: string]: (param?: any) => string;
 }
